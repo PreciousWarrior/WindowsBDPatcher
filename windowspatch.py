@@ -29,9 +29,10 @@ def install_patch(rootfpath):
     print("Cleaning up...")
     os.remove(os.path.join(resources_folder, "patch.zip"))
     print("Restarting Discord...")
-    os.system("TASKKILL /F /IM discord.exe")
+    installation_type = os.path.basename(os.path.normpath(rootfpath))
+    os.system(f"TASKKILL /F /IM {installation_type}.exe")
     time.sleep(1)
-    discordfp = os.path.join(rootfpath, "app-"+highest, "Discord.exe")
+    discordfp = os.path.join(rootfpath, "app-"+highest, f"{installation_type}.exe")
     os.system("start " + discordfp)
 
     
